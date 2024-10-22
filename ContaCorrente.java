@@ -3,14 +3,15 @@ public class ContaCorrente extends Conta{
         super(_id, _numeroConta, _nomeCliente, _telefone, _saldo);
     }
     public void verDadosConta(){
-        System.out.println("\n"+nomeCliente);
-        System.out.println(telefone);
-        System.out.println(numeroConta);
-        System.out.println(saldo);
+        System.out.println("\n"+getNomeCliente());
+        System.out.println(getTelefone());
+        System.out.println(getNumeroConta());
+        System.out.println(getSaldo());
     }
     @Override
     public void sacar(Double valor){
-        if (valor < saldo){
+        if (valor < getSaldo()){
+            double saldo = getSaldo();
             saldo-=valor+0.01;
             System.out.println("Valor sacado R$" + valor + "\nSaldo atualizado: R$" + saldo);
         } else{

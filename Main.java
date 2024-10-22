@@ -20,11 +20,31 @@ public class Main{
                     cc.criarCC(newValue);
                     contas.add(cc);
                 }
-            } else if (usuario == 3){
-                System.out.println("Informe o número da conta:");
-                int usuarioConta = newValue.nextInt();
-                newValue.nextLine();
-                contas.get(usuarioConta).verDadosConta();
+            } else if (usuario == 2){
+                while (true){
+                    System.out.println("Informe o número da conta:");
+                    int usuarioConta = newValue.nextInt();
+                    newValue.nextLine();
+                    if (usuarioConta < contas.size()){
+                        contas.get(usuarioConta).verSaldo();
+                        break;
+                    } else{
+                        System.out.println("Número de conta inválido!");
+                    }
+
+                }
+            }else if (usuario == 3){
+                while (true){
+                    System.out.println("Informe o número da conta:");
+                    int usuarioConta = newValue.nextInt();
+                    newValue.nextLine();
+                    if (usuarioConta < contas.size()){
+                        contas.get(usuarioConta).verDadosConta();
+                        break;
+                    } else{
+                        System.out.println("Número de conta inválido!");
+                    }
+                }
             }
         }
         newValue.close();

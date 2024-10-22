@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class Conta {
-    protected int id;
-    protected int numeroConta;
-    protected String nomeCliente;
-    protected String telefone;
-    protected Double saldo;
+    private int id;
+    private int numeroConta;
+    private String nomeCliente;
+    private String telefone;
+    private Double saldo;
 
     public Conta(int id, int numeroConta, String nomeCliente, String telefone, double saldo) {
         this.id=id;
@@ -13,6 +13,21 @@ public class Conta {
         this.nomeCliente=nomeCliente;
         this.telefone=telefone;
         this.saldo=saldo;
+    }
+    public int getId(){
+        return id;
+    }
+    public int getNumeroConta(){
+        return numeroConta;
+    }
+    public String getNomeCliente(){
+        return nomeCliente;
+    }
+    public String getTelefone(){
+        return telefone;
+    }
+    public double getSaldo(){
+        return saldo;
     }
     public void criarCC(Scanner newValue){
         System.out.println("Insira seu nome:");
@@ -36,7 +51,7 @@ public class Conta {
         System.out.println("O valor do depósito é de R$" + valor +"\nSaldo atualizado: R$" + saldo);
     }
     public void verSaldo(){
-        System.out.println("O saldo da conta é de R$" + saldo);
+        System.out.println("O saldo da conta de " + nomeCliente + " é de R$" + saldo);
     }
   
 }
