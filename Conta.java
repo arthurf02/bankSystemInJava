@@ -29,7 +29,11 @@ public class Conta {
     public double getSaldo(){
         return saldo;
     }
-    public void criarCC(Scanner newValue){
+
+    public void setSaldo(double valor){
+        saldo=valor;
+    }
+    public void criarConta(Scanner newValue){
         System.out.println("Insira seu nome:");
         nomeCliente = newValue.nextLine();
         System.out.println("Insira seu telefone:");
@@ -53,5 +57,10 @@ public class Conta {
     public void verSaldo(){
         System.out.println("O saldo da conta de " + nomeCliente + " é de R$" + saldo);
     }
-  
+    public void verDadosConta(){
+        System.out.println("\n"+getNomeCliente());
+        System.out.println(getTelefone());
+        System.out.println(getNumeroConta());
+        System.out.println(getSaldo());
+    }
 }
