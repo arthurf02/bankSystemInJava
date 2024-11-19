@@ -2,6 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 public class Main{
+    public static boolean isNumeric(String usuarioConta){
+        if (usuarioConta == null){
+            return false;
+        }
+        try{
+            int i = Integer.parseInt(usuarioConta);
+        } catch (NumberFormatException nfe){
+            return false;
+        }
+        return true;
+    }
     public static void main(String[] args){
         List<ContaCorrente> contasC = new ArrayList<>();
         List<ContaPoupanca> contasP = new ArrayList<>();
@@ -36,21 +47,32 @@ public class Main{
             } else if (usuario == 2){
                 while (true){
                     System.out.println("Informe o número da conta:");
-                    int usuarioConta = newValue.nextInt();
-                    newValue.nextLine();
+                    String usuarioConta = newValue.nextLine();
                     if (contasC.size() == 0 && contasP.size() == 0){
                         System.out.println("Não existem contas ainda. Crie uma conta!");
-                        break; 
-                    }else if(usuarioConta < contasC.size()){
-                        contasC.get(usuarioConta).verSaldo();
                         break;
-                    } else if (usuarioConta < contasP.size()){
-                        contasP.get(usuarioConta).verSaldo();
-                        break;
+                    } else if(isNumeric(usuarioConta)==true){
+                        int i = 0;
+                        int conta = Integer.parseInt(usuarioConta);
+                        int contaEncontrada = 0;
+                        while (i < contasC.size()){
+                            contaEncontrada = contasC.get(i).getNumeroConta();
+                            if (conta==contaEncontrada){
+                                System.out.println("Olá, " + contasC.get(i).getNomeCliente() + "!");
+                                System.out.println("O saldo da sua conta é de: R$" + contasC.get(i).getSaldo());
+                                break;
+                            } else {
+                                i+=1;
+                            }
+                        }
+                        if (conta!=contaEncontrada){
+                            System.out.println("Número de conta inválido!");
+                        } else{
+                            break;
+                        }
                     } else{
                         System.out.println("Número de conta inválido!");
                     }
-
                 }
             }else if (usuario == 3){
                 while (true){
