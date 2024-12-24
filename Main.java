@@ -46,32 +46,62 @@ public class Main{
                 }
             } else if (usuario == 2){
                 while (true){
-                    System.out.println("Informe o número da conta:");
-                    String usuarioConta = newValue.nextLine();
-                    if (contasC.size() == 0 && contasP.size() == 0){
-                        System.out.println("Não existem contas ainda. Crie uma conta!");
+                    System.out.println("Informe o id de conta (1 para Conta Corrente / 2 para Conta Poupança / 0 para sair): ");
+                    String idconta = newValue.next();
+                    if (Integer.parseInt(idconta) == 0){
                         break;
-                    } else if(isNumeric(usuarioConta)==true){
-                        int i = 0;
-                        int conta = Integer.parseInt(usuarioConta);
-                        int contaEncontrada = 0;
-                        while (i < contasC.size()){
-                            contaEncontrada = contasC.get(i).getNumeroConta();
-                            if (conta==contaEncontrada){
-                                System.out.println("Olá, " + contasC.get(i).getNomeCliente() + "!");
-                                System.out.println("O saldo da sua conta é de: R$" + contasC.get(i).getSaldo());
-                                break;
-                            } else {
-                                i+=1;
+                    } else if (isNumeric(idconta) == true && Integer.parseInt(idconta) == 1 && contasC.size() != 0){
+                        System.out.println("Informe o número da conta: ");
+                        String usuarioConta = newValue.next();
+                        if (isNumeric(usuarioConta) == true){
+                            int i = 0;
+                            int conta = Integer.parseInt(usuarioConta);
+                            int contaEncontrada = 0;
+                            while (i < contasC.size()){
+                                contaEncontrada = contasC.get(i).getNumeroConta();
+                                if (conta==contaEncontrada){
+                                    System.out.println("Olá, " + contasC.get(i).getNomeCliente() + "!");
+                                    System.out.println("O saldo da sua conta é de: R$" + contasC.get(i).getSaldo());
+                                    break;
+                                } else {
+                                    i+=1;
+                                }
                             }
-                        }
-                        if (conta!=contaEncontrada){
-                            System.out.println("Número de conta inválido!");
+                            if (conta!=contaEncontrada){
+                                System.out.println("Número de conta inválido!");
+                            } else{
+                                break;
+                            }
                         } else{
-                            break;
+                            System.out.println("Número de conta inválido!");
+                        }
+                    }else if (isNumeric(idconta) == true && Integer.parseInt(idconta) == 2 && contasP.size() != 0){
+                        System.out.println("Informe o número da conta: ");
+                        String usuarioConta = newValue.nextLine();
+                        if (isNumeric(usuarioConta) == true){
+                            int i = 0;
+                            int conta = Integer.parseInt(usuarioConta);
+                            int contaEncontrada = 0;
+                            while (i < contasP.size()){
+                                contaEncontrada = contasP.get(i).getNumeroConta();
+                                if (conta==contaEncontrada){
+                                    System.out.println("Olá, " + contasP.get(i).getNomeCliente() + "!");
+                                    System.out.println("O saldo da sua conta é de: R$" + contasP.get(i).getSaldo());
+                                    break;
+                                } else {
+                                    i+=1;
+                                }
+                            }
+                            if (conta!=contaEncontrada){
+                                System.out.println("Número de conta inválido!");
+                            } else{
+                                break;
+                            }
+                        } else{
+                            System.out.println("Número de conta inválido!");
                         }
                     } else{
-                        System.out.println("Número de conta inválido!");
+                        System.out.println("Id sem contas cadastradas ou inválido!");
                     }
                 }
             }else if (usuario == 3){
