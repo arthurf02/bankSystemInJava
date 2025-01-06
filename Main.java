@@ -16,41 +16,43 @@ public class Main{
     public static void main(String[] args){
         List<ContaCorrente> contasC = new ArrayList<>();
         List<ContaPoupanca> contasP = new ArrayList<>();
-        int usuario = 1;
+        String usuario = "";
         Scanner newValue = new Scanner(System.in);
         System.out.println("Banco Agiota\nSeu dinheiro, nossa vida!");
-        while (usuario != 0){
-            System.out.println("\nMENU\n1-Criar conta\n2-Ver saldo\n3-Ver dados da conta\n4-Sacar\n5-Depositar");
-            usuario = newValue.nextInt();
-            newValue.nextLine();
-            if (usuario == 1){
-                System.out.println("Qual tipo de conta você quer criar:\n1- Conta Corrente\n2- Conta Poupança");
-                usuario = newValue.nextInt();
-                newValue.nextLine();
+        while (true){
+            System.out.println("\nMENU\n1- Criar conta\n2- Ver saldo\n3- Ver dados da conta\n4- Sacar\n5- Depositar\n0- Sair");
+            usuario = newValue.next();
+            if (Integer.parseInt(usuario) == 0){
+                break;
+            } else if (Integer.parseInt(usuario) == 1){
+                System.out.println("Qual tipo de conta você quer criar:\n1- Conta Corrente\n2- Conta Poupança\n0- Voltar");
+                usuario = newValue.next();
                 while (true){
-                    if (usuario == 1){
+                    if (Integer.parseInt(usuario) == 0){
+                        break;
+                    } else if (Integer.parseInt(usuario) == 1){
                         ContaCorrente cc = new ContaCorrente(1,contasC.size()+10000,"","",0.0);
                         cc.criarConta(newValue);
                         contasC.add(cc);
                         break;
-                    } else if (usuario == 2){
+                    } else if (Integer.parseInt(usuario) == 2){
                         ContaPoupanca cp = new ContaPoupanca(2, contasP.size()+10000, "", "", 0.0);
                         cp.criarConta(newValue);
                         contasP.add(cp);
                         break;
                     } else {
                         System.out.println("Opção inválida!");
-                        usuario = 1;
+                        usuario = "1";
                         break;
                     }
                 }
-            } else if (usuario == 2){
+            } else if (Integer.parseInt(usuario) == 2){
                 while (true){
-                    System.out.println("Informe o id de conta (1 para Conta Corrente / 2 para Conta Poupança / 0 para sair): ");
-                    String idconta = newValue.next();
-                    if (Integer.parseInt(idconta) == 0){
+                    System.out.println("Informe o id da conta (1 para Conta Corrente / 2 para Conta Poupança / 0 para sair): ");
+                    String idConta = newValue.next();
+                    if (Integer.parseInt(idConta) == 0){
                         break;
-                    } else if (isNumeric(idconta) == true && Integer.parseInt(idconta) == 1 && contasC.size() != 0){
+                    } else if (isNumeric(idConta) == true && Integer.parseInt(idConta) == 1 && contasC.size() != 0){
                         System.out.println("Informe o número da conta: ");
                         String usuarioConta = newValue.next();
                         if (isNumeric(usuarioConta) == true){
@@ -75,9 +77,9 @@ public class Main{
                         } else{
                             System.out.println("Número de conta inválido!");
                         }
-                    }else if (isNumeric(idconta) == true && Integer.parseInt(idconta) == 2 && contasP.size() != 0){
+                    }else if (isNumeric(idConta) == true && Integer.parseInt(idConta) == 2 && contasP.size() != 0){
                         System.out.println("Informe o número da conta: ");
-                        String usuarioConta = newValue.nextLine();
+                        String usuarioConta = newValue.next();
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
@@ -104,19 +106,52 @@ public class Main{
                         System.out.println("Id sem contas cadastradas ou inválido!");
                     }
                 }
-            }else if (usuario == 3){
+            } else if (Integer.parseInt(usuario) == 3){
                 while (true){
-                    System.out.println("Informe o número da conta:");
-                    int usuarioConta = newValue.nextInt();
-                    newValue.nextLine();
-                    if (usuarioConta < contasC.size()){
-                        contasC.get(usuarioConta).verDadosConta();
+                    System.out.println("Informe o id da conta: ");
+                    String idConta = newValue.next();
+                    if (isNumeric(idConta) == true && Integer.parseInt(idConta) == 1 && contasC.size() != 0){
+                        System.out.println("Informe o número da conta:");
+                        String usuarioConta = newValue.next();
+                        if (isNumeric(usuarioConta) == true){
+                            int i = 0;
+                            int conta = Integer.parseInt(usuarioConta);
+                            int contaEncontrada = 0;
+                            while (i < contasC.size()){
+                                contaEncontrada = contasC.get(i).getNumeroConta();
+                                if (conta==contaEncontrada){
+                                    contasC.get(i).verDadosConta();
+                                    break;
+                                } else {
+                                    System.out.println("Número de conta inválido!");
+                                    break;
+                                }
+                            }
+                        } break;
+                    } else if (isNumeric(idConta) == true && Integer.parseInt(idConta) == 2 && contasP.size() != 0){
+                        System.out.println("Informe o número da conta:");
+                        String usuarioConta = newValue.next();
+                        if (isNumeric(usuarioConta) == true){
+                            int i = 0;
+                            int conta = Integer.parseInt(usuarioConta);
+                            int contaEncontrada = 0;
+                            while (i < contasC.size()){
+                                contaEncontrada = contasP.get(i).getNumeroConta();
+                                if (conta==contaEncontrada){
+                                    contasP.get(i).verDadosConta();
+                                    break;
+                                } else {
+                                    System.out.println("Número de conta inválido!");
+                                    break;
+                                }
+                            }
+                        } break;
+                    } else {
+                        System.out.println("Id inválido ou não existem contas cadastradas!");
                         break;
-                    } else{
-                        System.out.println("Número de conta inválido!");
                     }
                 }
-            } else if (usuario == 4){
+            } else if (Integer.parseInt(usuario) == 4){
                 while (true){
                     System.out.println("Informe o número da conta:");
                     int usuarioConta = newValue.nextInt();

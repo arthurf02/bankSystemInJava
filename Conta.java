@@ -35,9 +35,9 @@ public class Conta {
     }
     public void criarConta(Scanner newValue){
         System.out.println("Insira seu nome:");
-        nomeCliente = newValue.nextLine();
+        nomeCliente = newValue.next();
         System.out.println("Insira seu telefone:");
-        telefone = newValue.nextLine();
+        telefone = newValue.next();
         System.out.println("Deposite um valor inicial:");
         saldo = newValue.nextDouble();
         newValue.nextLine();
@@ -58,9 +58,11 @@ public class Conta {
         System.out.println("O saldo da conta de " + nomeCliente + " é de R$" + saldo);
     }
     public void verDadosConta(){
-        System.out.println("\n"+getNomeCliente());
-        System.out.println(getTelefone());
-        System.out.println(getNumeroConta());
-        System.out.println(getSaldo());
+        System.out.println("\nNome: " + getNomeCliente());
+        System.out.println("Telefone: " + getTelefone());
+        System.out.println("Número da conta: " + getNumeroConta());
+        System.out.print("Saldo: ");
+        System.out.printf("%.2f" , getSaldo());
+        System.out.println("\n");
     }
 }
