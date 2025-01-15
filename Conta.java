@@ -50,7 +50,7 @@ public class Conta {
     }
     public void depositar(double valor){
         if (valor < saldo){
-            saldo-=valor;
+            saldo+=valor;
         }
         System.out.println("O valor do depósito é de R$" + valor +"\nSaldo atualizado: R$" + saldo);
     }

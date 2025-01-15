@@ -8,5 +8,6 @@ public class ContaCorrente extends Conta{
         saldo-=valor+0.01;
         setSaldo(saldo);
         System.out.println("Valor sacado R$" + valor + "\nSaldo atualizado: R$" + saldo);
+        System.out.println("Você paga uma taxa de R$0,01 a cada saque");
     }
 }
