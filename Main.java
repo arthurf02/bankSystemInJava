@@ -16,7 +16,7 @@ public class Main{
     public static void main(String[] args){
         List<ContaCorrente> contasC = new ArrayList<>();
         List<ContaPoupanca> contasP = new ArrayList<>();
-        String usuario = "";
+        String usuario;
         Scanner newValue = new Scanner(System.in);
         System.out.println("Banco Agiota\nSeu dinheiro, nossa vida!");
         while (true){
@@ -114,7 +114,7 @@ public class Main{
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
-                            int contaEncontrada = 0;
+                            int contaEncontrada;
                             while (i < contasC.size()){
                                 contaEncontrada = contasC.get(i).getNumeroConta();
                                 if (conta==contaEncontrada){
@@ -132,7 +132,7 @@ public class Main{
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
-                            int contaEncontrada = 0;
+                            int contaEncontrada;
                             while (i < contasP.size()){
                                 contaEncontrada = contasP.get(i).getNumeroConta();
                                 if (conta==contaEncontrada){
@@ -159,7 +159,7 @@ public class Main{
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
-                            int contaEncontrada = 0;
+                            int contaEncontrada;
                             while (true){
                                 contaEncontrada = contasC.get(i).getNumeroConta();
                                 if (conta==contaEncontrada){
@@ -185,7 +185,7 @@ public class Main{
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
-                            int contaEncontrada = 0;
+                            int contaEncontrada;
                             while (true){
                                 contaEncontrada = contasP.get(i).getNumeroConta();
                                 if (conta==contaEncontrada){
@@ -220,7 +220,7 @@ public class Main{
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
-                            int contaEncontrada = 0;
+                            int contaEncontrada;
                             while (i < contasC.size()){
                                 contaEncontrada = contasC.get(i).getNumeroConta();
                                 if (conta==contaEncontrada){
@@ -243,7 +243,7 @@ public class Main{
                         if (isNumeric(usuarioConta) == true){
                             int i = 0;
                             int conta = Integer.parseInt(usuarioConta);
-                            int contaEncontrada = 0;
+                            int contaEncontrada;
                             while (i < contasP.size()){
                                 contaEncontrada = contasP.get(i).getNumeroConta();
                                 if (conta==contaEncontrada){

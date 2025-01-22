@@ -1,3 +1,6 @@
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Conta {
@@ -34,13 +37,33 @@ public class Conta {
         saldo=valor;
     }
     public void criarConta(Scanner newValue){
+        String input;
         System.out.println("Insira seu nome:");
         nomeCliente = newValue.next();
-        System.out.println("Insira seu telefone:");
-        telefone = newValue.next();
-        System.out.println("Deposite um valor inicial:");
-        saldo = newValue.nextDouble();
-        newValue.nextLine();
+        while (true){
+            System.out.println("Insira seu telefone:");
+            input = newValue.next();
+            if (Main.isNumeric(input)==true){
+                telefone = input;
+                break;
+            } else{
+                System.out.println("Telefone inválido! Insira apenas números.");
+            }
+        }
+        while (true){
+            System.out.println("Deposite um valor inicial:");
+            input = newValue.next();
+            Locale.setDefault(Locale.forLanguageTag("pt-BR"));
+            NumberFormat numberFormat = NumberFormat.getInstance();
+            try {
+                Number number = numberFormat.parse(input);
+                double value = number.doubleValue();
+                saldo = value;
+                break;
+            } catch (ParseException e) {
+                System.out.println("Valor inválido. Certifique-se de inserir apenas números e vírgula para separar os centavos.");
+            }
+        }
     }
     public void sacar(Double valor){
         if (valor<saldo){
