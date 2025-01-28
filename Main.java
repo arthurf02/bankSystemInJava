@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 public class Main{
-    public static boolean isNumeric(String usuarioConta){
-        if (usuarioConta == null){
+    public static boolean isNumeric(String usuario){
+        if (usuario == null){
             return false;
         }
         try{
-            int i = Integer.parseInt(usuarioConta);
+            long i = Long.parseLong(usuario);
         } catch (NumberFormatException nfe){
             return false;
         }
@@ -21,12 +21,14 @@ public class Main{
         System.out.println("Banco Agiota\nSeu dinheiro, nossa vida!");
         while (true){
             System.out.println("\nMENU\n1- Criar conta\n2- Ver saldo\n3- Ver dados da conta\n4- Sacar\n5- Depositar\n0- Sair");
+            System.out.println("Insira o número de uma das opções acima: ");
             usuario = newValue.next();
             if (isNumeric(usuario) == true && Integer.parseInt(usuario) == 0){
                 break;
             } else if (isNumeric(usuario) == true && Integer.parseInt(usuario) == 1){
                 while (true){
-                    System.out.println("Qual tipo de conta você quer criar:\n1- Conta Corrente\n2- Conta Poupança\n0- Voltar");
+                    System.out.println("\nQual tipo de conta você quer criar:\n1- Conta Corrente\n2- Conta Poupança\n0- Voltar");
+                    System.out.println("Insira o número de uma das opções acima:");
                     usuario = newValue.next();
                     if (isNumeric(usuario) == true && Integer.parseInt(usuario) == 0){
                         break;
@@ -34,11 +36,15 @@ public class Main{
                         ContaCorrente cc = new ContaCorrente(1,contasC.size()+10000,"","",0.0);
                         cc.criarConta(newValue);
                         contasC.add(cc);
+                        System.out.println("Seu id de conta é: 1");
+                        System.out.println("Seu número de conta é: " + contasC.get(contasC.size()-1).getNumeroConta());
                         break;
                     } else if (isNumeric(usuario) == true && Integer.parseInt(usuario) == 2){
                         ContaPoupanca cp = new ContaPoupanca(2, contasP.size()+10000, "", "", 0.0);
                         cp.criarConta(newValue);
                         contasP.add(cp);
+                        System.out.println("Seu id de conta é: 2");
+                        System.out.println("Seu número de conta é: " + contasP.get(contasP.size()-1).getNumeroConta());
                         break;
                     } else {
                         System.out.println("Opção inválida!");

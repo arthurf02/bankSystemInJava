@@ -38,16 +38,29 @@ public class Conta {
     }
     public void criarConta(Scanner newValue){
         String input;
-        System.out.println("Insira seu nome:");
-        nomeCliente = newValue.next();
+        while (true){
+            System.out.println("Insira seu nome:");
+            input = newValue.next();
+            /*Usando o método matches com uma expressão regular para validar
+            se o input contém apenas letras.
+            */
+            if (input.matches("^[a-zA-Z]+$") == true){
+                nomeCliente = input;
+                newValue.nextLine();
+                break;
+            } else{
+                System.out.println("Nome inválido! Digite apenas letras");
+            }
+        }
         while (true){
             System.out.println("Insira seu telefone:");
             input = newValue.next();
-            if (Main.isNumeric(input)==true){
+            if (Main.isNumeric(input)==true && input.length() == 11){
                 telefone = input;
+                newValue.nextLine();
                 break;
             } else{
-                System.out.println("Telefone inválido! Insira apenas números.");
+                System.out.println("Telefone inválido! Insira o número DDD e mais 9 números.");
             }
         }
         while (true){
