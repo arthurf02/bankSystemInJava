@@ -1,6 +1,5 @@
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Conta {
@@ -9,6 +8,7 @@ public class Conta {
     private String nomeCliente;
     private String telefone;
     private Double saldo;
+    NumberFormat numberFormat = NumberFormat.getInstance();
 
     public Conta(int id, int numeroConta, String nomeCliente, String telefone, double saldo) {
         this.id=id;
@@ -37,16 +37,21 @@ public class Conta {
         saldo=valor;
     }
     public void criarConta(Scanner newValue){
+        newValue.nextLine();
         String input;
         while (true){
             System.out.println("Insira seu nome:");
-            input = newValue.next();
+            input = newValue.nextLine();
             /*Usando o método matches com uma expressão regular para validar
             se o input contém apenas letras.
+            ^: início da string;
+            [a-zA-Z]: Representa qualquer letra maiúscula ou minúscula;
+            +: Garante que haja pelo menos uma letra;
+            \\s: permite apenas espaços ou tabulações na string;
+            $: Indica o fim da string.
             */
-            if (input.matches("^[a-zA-Z]+$") == true){
+            if (input.matches("^[a-zA-Z\\s]+$")){
                 nomeCliente = input;
-                newValue.nextLine();
                 break;
             } else{
                 System.out.println("Nome inválido! Digite apenas letras");
@@ -54,10 +59,9 @@ public class Conta {
         }
         while (true){
             System.out.println("Insira seu telefone:");
-            input = newValue.next();
+            input = newValue.nextLine();
             if (Main.isNumeric(input)==true && input.length() == 11){
                 telefone = input;
-                newValue.nextLine();
                 break;
             } else{
                 System.out.println("Telefone inválido! Insira o número DDD e mais 9 números.");
@@ -65,9 +69,7 @@ public class Conta {
         }
         while (true){
             System.out.println("Deposite um valor inicial:");
-            input = newValue.next();
-            Locale.setDefault(Locale.forLanguageTag("pt-BR"));
-            NumberFormat numberFormat = NumberFormat.getInstance();
+            input = newValue.nextLine();
             try {
                 Number number = numberFormat.parse(input);
                 double value = number.doubleValue();
@@ -82,23 +84,23 @@ public class Conta {
         if (valor<saldo){
             saldo-=valor;
         }
-        System.out.println("Valor sacado: R$" + valor + "\nO saldo agora é de: " + saldo);
+        System.out.println("Valor sacado: R$" + NumberFormat.getCurrencyInstance().format(valor) + "\nO saldo agora é de: " + NumberFormat.getCurrencyInstance().format(saldo));
     }
     public void depositar(double valor){
         if (valor < saldo){
             saldo+=valor;
         }
-        System.out.println("O valor do depósito é de R$" + valor +"\nSaldo atualizado: R$" + saldo);
+        System.out.println("O valor do depósito é de R$" + NumberFormat.getCurrencyInstance().format(valor) +"\nSaldo atualizado: R$" + NumberFormat.getCurrencyInstance().format(saldo));
     }
     public void verSaldo(){
-        System.out.println("O saldo da conta de " + nomeCliente + " é de R$" + saldo);
+        System.out.println("O saldo da conta de " + nomeCliente + " é de R$" + NumberFormat.getCurrencyInstance().format(saldo));
     }
     public void verDadosConta(){
         System.out.println("\nNome: " + getNomeCliente());
         System.out.println("Telefone: " + getTelefone());
         System.out.println("Número da conta: " + getNumeroConta());
         System.out.print("Saldo: ");
-        System.out.printf("%.2f" , getSaldo());
+        System.out.printf(NumberFormat.getCurrencyInstance().format(getSaldo()));
         System.out.println("\n");
     }
 }

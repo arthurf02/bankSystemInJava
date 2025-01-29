@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 public class Main{
     public static boolean isNumeric(String usuario){
@@ -14,6 +15,7 @@ public class Main{
         return true;
     }
     public static void main(String[] args){
+        Locale.setDefault(Locale.forLanguageTag("pt-BR"));
         List<ContaCorrente> contasC = new ArrayList<>();
         List<ContaPoupanca> contasP = new ArrayList<>();
         String usuario;
