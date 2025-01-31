@@ -1,5 +1,6 @@
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Conta {
@@ -8,6 +9,8 @@ public class Conta {
     private String nomeCliente;
     private String telefone;
     private Double saldo;
+    Locale localeBR = Locale.forLanguageTag("pt-BR");
+    NumberFormat currency = NumberFormat.getCurrencyInstance(localeBR);
     NumberFormat numberFormat = NumberFormat.getInstance();
 
     public Conta(int id, int numeroConta, String nomeCliente, String telefone, double saldo) {
@@ -84,23 +87,25 @@ public class Conta {
         if (valor<saldo){
             saldo-=valor;
         }
-        System.out.println("Valor sacado: R$" + NumberFormat.getCurrencyInstance().format(valor) + "\nO saldo agora é de: " + NumberFormat.getCurrencyInstance().format(saldo));
+        System.out.println("Valor sacado: " + currency.format(valor) + "\nO saldo agora é de: " + currency.format(saldo));
     }
     public void depositar(double valor){
-        if (valor < saldo){
+        if (valor >= 1){
             saldo+=valor;
+            System.out.println("O valor do depósito é de: " + currency.format(valor) +"\nSaldo atualizado: " + currency.format(saldo));
+        }else{
+            System.out.println("Valor inferior a R$1,00.");
         }
-        System.out.println("O valor do depósito é de R$" + NumberFormat.getCurrencyInstance().format(valor) +"\nSaldo atualizado: R$" + NumberFormat.getCurrencyInstance().format(saldo));
     }
     public void verSaldo(){
-        System.out.println("O saldo da conta de " + nomeCliente + " é de R$" + NumberFormat.getCurrencyInstance().format(saldo));
+        System.out.println("Olá, " + getNomeCliente() + "!");
+        System.out.println("O saldo da sua conta é de: " + currency.format(getSaldo()));
     }
     public void verDadosConta(){
         System.out.println("\nNome: " + getNomeCliente());
         System.out.println("Telefone: " + getTelefone());
         System.out.println("Número da conta: " + getNumeroConta());
         System.out.print("Saldo: ");
-        System.out.printf(NumberFormat.getCurrencyInstance().format(getSaldo()));
-        System.out.println("\n");
+        System.out.println(currency.format(getSaldo()));
     }
 }
