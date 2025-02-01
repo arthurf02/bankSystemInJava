@@ -1,5 +1,6 @@
 
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +22,7 @@ public class Main {
 
     public static void main(String[] args) {
         Locale localeBR = Locale.forLanguageTag("pt-BR");
+        NumberFormat numberFormat = NumberFormat.getInstance();
         NumberFormat currency = NumberFormat.getCurrencyInstance(localeBR);
         List<ContaCorrente> contasC = new ArrayList<>();
         List<ContaPoupanca> contasP = new ArrayList<>();
@@ -180,19 +182,25 @@ public class Main {
                                     System.out.println("Conta de " + contasC.get(i).getNomeCliente());
                                     System.out.println("Saldo atual: " + currency.format(contasC.get(i).getSaldo()));
                                     System.out.println("Informe o valor a sacar:");
-                                    String valorSaque = newValue.next();
-                                    if (isNumeric(valorSaque) == true && Double.parseDouble(valorSaque) <= contasC.get(i).getSaldo()) {
-                                        double saque = Double.parseDouble(valorSaque);
-                                        contasC.get(i).sacar(saque);
-                                        break;
-                                    } else {
-                                        System.out.println("Valor inválido ou saldo insuficiente!");
+                                    String input = newValue.next();
+                                    try {
+                                        Number number = numberFormat.parse(input);
+                                        double valorSaque = number.doubleValue();
+                                        if (valorSaque > 0 && valorSaque <= contasC.get(i).getSaldo()) {
+                                            contasC.get(i).sacar(valorSaque);
+                                            break;
+                                        } else {
+                                            System.out.println("Valor inválido ou saldo insuficiente!");
+                                        }
+                                    } catch (ParseException e) {
+                                        System.out.println("Valor inválido. Certifique-se de inserir apenas números e vírgula para separar os centavos.");
                                     }
+                                    
                                 } else {
                                     System.out.println("Número de conta inválido!");
                                 }
-                                break;
                             }
+                        break;
                         }
                     } else if (isNumeric(idConta) == true && Integer.parseInt(idConta) == 2 && contasP.size() != 0) {
                         System.out.println("Informe o número da conta:");
@@ -207,24 +215,29 @@ public class Main {
                                     System.out.println("Conta de " + contasP.get(i).getNomeCliente());
                                     System.out.println("Saldo atual: " + currency.format(contasP.get(i).getSaldo()));
                                     System.out.println("Informe o valor a sacar:");
-                                    String valorSaque = newValue.next();
-                                    if (isNumeric(valorSaque) == true && Double.parseDouble(valorSaque) <= contasP.get(i).getSaldo()) {
-                                        double saque = Double.parseDouble(valorSaque);
-                                        contasP.get(i).sacar(saque);
-                                        break;
-                                    } else {
-                                        System.out.println("Valor inválido ou saldo insuficiente!");
+                                    String input = newValue.next();
+                                    try {
+                                        Number number = numberFormat.parse(input);
+                                        double valorSaque = number.doubleValue();
+                                        if (valorSaque > 0 && valorSaque <= contasP.get(i).getSaldo()) {
+                                            contasP.get(i).sacar(valorSaque);
+                                            break;
+                                        } else {
+                                            System.out.println("Valor inválido ou saldo insuficiente!");
+                                        }
+                                    } catch (ParseException e) {
+                                        System.out.println("Valor inválido. Certifique-se de inserir apenas números e vírgula para separar os centavos.");
                                     }
                                 } else {
                                     System.out.println("Número de conta inválido!");
                                 }
                             }
+                        break;
                         }
                     } else {
                         System.out.println("Não há contas existentes. Crie uma primeiro para poder sacar.");
                         break;
                     }
-                    break;
                 }
             } else if (isNumeric(usuario) == true && Integer.parseInt(usuario) == 5) {
                 while (true) {
@@ -241,11 +254,18 @@ public class Main {
                                 contaEncontrada = contasC.get(i).getNumeroConta();
                                 if (conta == contaEncontrada) {
                                     System.out.println("Informe o valor para depositar: ");
-                                    String valor = newValue.next();
-                                    if (isNumeric(valor) == true && Integer.parseInt(valor) > 0) {
-                                        double deposito = Double.parseDouble(valor);
-                                        contasC.get(i).depositar(deposito);
-                                        break;
+                                    String input = newValue.next();
+                                    try {
+                                        Number number = numberFormat.parse(input);
+                                        double valorDeposito = number.doubleValue();
+                                        if (valorDeposito > 0) {
+                                            contasC.get(i).depositar(valorDeposito);
+                                            break;
+                                        } else {
+                                            System.out.println("Valor inferior a R$1,00!");
+                                        }
+                                    } catch (ParseException e) {
+                                        System.out.println("Valor inválido. Certifique-se de inserir apenas números e vírgula para separar os centavos.");
                                     }
                                 } else {
                                     System.out.println("Número de conta inválido!");
@@ -265,11 +285,18 @@ public class Main {
                                 contaEncontrada = contasP.get(i).getNumeroConta();
                                 if (conta == contaEncontrada) {
                                     System.out.println("Informe o valor para depositar: ");
-                                    String valor = newValue.next();
-                                    if (isNumeric(valor) == true && Integer.parseInt(valor) > 0) {
-                                        double deposito = Double.parseDouble(valor);
-                                        contasP.get(i).depositar(deposito);
-                                        break;
+                                    String input = newValue.next();
+                                    try {
+                                        Number number = numberFormat.parse(input);
+                                        double valorDeposito = number.doubleValue();
+                                        if (valorDeposito > 0) {
+                                            contasP.get(i).depositar(valorDeposito);
+                                            break;
+                                        } else {
+                                            System.out.println("Valor inferior a R$1,00!");
+                                        }
+                                    } catch (ParseException e) {
+                                        System.out.println("Valor inválido. Certifique-se de inserir apenas números e vírgula para separar os centavos.");
                                     }
                                 }
                             }

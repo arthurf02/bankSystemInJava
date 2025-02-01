@@ -1,4 +1,3 @@
-import java.text.NumberFormat;
 
 public class ContaCorrente extends Conta{
     public ContaCorrente(int _id, int _numeroConta, String _nomeCliente, String _telefone, Double _saldo){
@@ -10,7 +9,7 @@ public class ContaCorrente extends Conta{
         double saldo = getSaldo();
         saldo-=valor+0.01;
         setSaldo(saldo);
-        System.out.println("Valor sacado: " + NumberFormat.getCurrencyInstance().format(valor) + "\nSaldo atualizado: " + saldo);
+        System.out.println("Valor sacado: " + currency.format(valor) + "\nSaldo atualizado: " + currency.format(saldo));
         System.out.println("Você paga uma taxa de R$0,01 a cada saque");
     }
 }
