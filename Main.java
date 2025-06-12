@@ -1,10 +1,13 @@
-
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.Border;
 
 public class Main {
 
@@ -21,6 +24,26 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        JFrame frame = new JFrame("Banco Agiota");
+        frame.setSize(720,480);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        Border lineBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
+        panel.setBorder(lineBorder);
+
+        JLabel mainTitle = new JLabel("Banco Agiota");
+        constraints.gridx = 1;
+        constraints.anchor = GridBagConstraints.NORTH;
+        panel.add(mainTitle, constraints);
+
+        JLabel mainTitle2 = new JLabel("Seu dinheiro, nossa vida!");
+        panel.add(mainTitle2, constraints);
+
+        frame.add(panel, BorderLayout.NORTH);
+        frame.setVisible(true);
+
         Locale localeBR = Locale.forLanguageTag("pt-BR");
         NumberFormat numberFormat = NumberFormat.getInstance();
         NumberFormat currency = NumberFormat.getCurrencyInstance(localeBR);
