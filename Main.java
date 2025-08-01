@@ -1,11 +1,10 @@
+import java.awt.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -28,20 +27,51 @@ public class Main {
         frame.setSize(720,480);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+
         JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
+        panel.setPreferredSize(new Dimension(0,5));
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.weighty = 0;
         Border lineBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
         panel.setBorder(lineBorder);
 
         JLabel mainTitle = new JLabel("Banco Agiota");
-        constraints.gridx = 1;
-        constraints.anchor = GridBagConstraints.NORTH;
-        panel.add(mainTitle, constraints);
+        panel.add(mainTitle, c);
 
+        c.gridy = 1;
         JLabel mainTitle2 = new JLabel("Seu dinheiro, nossa vida!");
-        panel.add(mainTitle2, constraints);
+        panel.add(mainTitle2, c);
 
-        frame.add(panel, BorderLayout.NORTH);
+        JPanel panel2 = new JPanel(new BorderLayout());
+        JLabel mainMenu = new JLabel("MENU", SwingConstants.CENTER);
+        panel2.add(mainMenu, BorderLayout.CENTER);
+        panel2.setBorder(lineBorder);
+        panel2.setMaximumSize(new Dimension(Integer.MAX_VALUE, 10));
+
+        JPanel panel3 = new JPanel(new GridBagLayout());
+        panel3.setMaximumSize(new Dimension(Integer.MAX_VALUE,300));
+        c.insets = new Insets(10, 10, 10, 0);
+        c.gridy = 0;
+        panel3.add(new JButton("Criar conta"), c.gridy);
+        c.gridx = 1;
+        panel3.add(new JButton("Ver saldo"), c.insets);
+        c.gridx = 2;
+        panel3.add(new JButton("Ver dados da conta"), c);
+        c.gridx = 0;
+        c.gridy = 1;
+        panel3.add(new JButton("Sacar"), c);
+        c.gridx = 2;
+        panel3.add(new JButton("Depositar"), c);
+        panel3.setBorder(lineBorder);
+
+        mainPanel.add(panel);
+        mainPanel.add(panel2);
+        mainPanel.add(panel3);
+        frame.add(mainPanel);
         frame.setVisible(true);
 
         Locale localeBR = Locale.forLanguageTag("pt-BR");
