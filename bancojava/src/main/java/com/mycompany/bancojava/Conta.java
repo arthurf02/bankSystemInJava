@@ -4,22 +4,20 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Conta {
 
+    static NumberFormat currency = NumberFormat.getInstance();
     private int id;
     private int numeroConta;
     private String nomeCliente;
     private String telefone;
     private Double saldo;
-    Locale localeBR = Locale.forLanguageTag("pt-BR");
-    NumberFormat currency = NumberFormat.getCurrencyInstance(localeBR);
-    NumberFormat numberFormat = NumberFormat.getInstance();
     static List<ContaCorrente> contasC = new ArrayList<>();
     static List<ContaPoupanca> contasP = new ArrayList<>();
 
@@ -68,7 +66,13 @@ public class Conta {
     }
 
     public static void criarConta(JTextField nome, JTextField telefone, JTextField saldo, JComboBox<String> comboBoxAccountType) {
-        double saldo1 = Double.parseDouble(saldo.getText());
+        Number number = 0;
+        try {
+            number = currency.parse(saldo.getText());
+        } catch (ParseException ex) {
+            System.getLogger(Conta.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        double saldo1 = number.doubleValue();
         String accountType = String.valueOf(comboBoxAccountType.getSelectedItem());
         if (accountType == "1- Corrente") {
             ContaCorrente cc = new ContaCorrente(1, contasC.size() + 10000, nome.getText(), telefone.getText(), saldo1);
@@ -110,7 +114,7 @@ public class Conta {
         }
     }
 
-    public static void verSaldo(JComboBox accountBalanceId, JTextField accountBalanceNumber, JLabel accountBalance) {
+    public static void verSaldo(JComboBox accountBalanceId, JTextField accountBalanceNumber, JLabel accountBalance, JPanel balanceMenu, JPanel balanceMenu2) {
         if (accountBalanceId.getSelectedItem() == "1") {
             if (isNumeric(accountBalanceNumber.getText()) == true) {
                 int conta = Integer.parseInt(accountBalanceNumber.getText());
@@ -120,18 +124,20 @@ public class Conta {
                     contaEncontrada = contasC.get(i).getNumeroConta();
                     if (conta == contaEncontrada) {
                         accountBalance.setText(String.valueOf(contasC.get(i).getSaldo()));
+                        balanceMenu.setVisible(false);
+                        balanceMenu2.setVisible(true);
                         break;
                     } else {
                         i += 1;
                     }
                 }
                 if (conta != contaEncontrada) {
-                    System.out.println("Número de conta inválido!");
+                    JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
                 }
-            } else{
-                System.out.println("Número de conta inválido!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-        } else{
+        } else {
             if (isNumeric(accountBalanceNumber.getText()) == true) {
                 int conta = Integer.parseInt(accountBalanceNumber.getText());
                 int i = 0;
@@ -139,26 +145,68 @@ public class Conta {
                 while (i < contasP.size()) {
                     contaEncontrada = contasP.get(i).getNumeroConta();
                     if (conta == contaEncontrada) {
-                        contasP.get(i).getSaldo();
+                        accountBalance.setText(String.valueOf(contasP.get(i).getSaldo()));
+                        balanceMenu.setVisible(false);
+                        balanceMenu2.setVisible(true);
+                        break;
+                    } else {
+                        i += 1;
+                    }
+                }
+            } else {
+                System.out.println("Número de conta inválido!");
+            }
+        }
+    }
+
+    public static void verDadosConta(JComboBox accountDataId, JTextField accountDataNumber, JLabel accountDataName, JLabel accountDataPhone, JPanel accountDataMenu, JPanel accountDataMenu2) {
+        if (accountDataId.getSelectedItem() == "1- Corrente") {
+            if (isNumeric(accountDataNumber.getText()) == true) {
+                int conta = Integer.parseInt(accountDataNumber.getText());
+                int i = 0;
+                int contaEncontrada = 0;
+                while (i < contasC.size()) {
+                    contaEncontrada = contasC.get(i).getNumeroConta();
+                    if (conta == contaEncontrada) {
+                        accountDataName.setText(String.valueOf(contasC.get(i).getNomeCliente()));
+                        accountDataPhone.setText(String.valueOf(contasC.get(i).getTelefone()));
+                        accountDataMenu.setVisible(false);
+                        accountDataMenu2.setVisible(true);
                         break;
                     } else {
                         i += 1;
                     }
                 }
                 if (conta != contaEncontrada) {
-                    System.out.println("Número de conta inválido!");
+                    JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
                 }
-            } else{
-                System.out.println("Número de conta inválido!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            if (isNumeric(accountDataNumber.getText()) == true) {
+                int conta = Integer.parseInt(accountDataNumber.getText());
+                int i = 0;
+                int contaEncontrada = 0;
+                while (i < contasP.size()) {
+                    contaEncontrada = contasP.get(i).getNumeroConta();
+                    if (conta == contaEncontrada) {
+                        accountDataName.setText(String.valueOf(contasP.get(i).getNomeCliente()));
+                        accountDataPhone.setText(String.valueOf(contasP.get(i).getTelefone()));
+                        accountDataMenu.setVisible(false);
+                        accountDataMenu2.setVisible(true);
+                        break;
+                    } else {
+                        i += 1;
+                    }
+                }
+                if (conta != contaEncontrada) {
+                    JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
             }
         }
-    }
-
-    public void verDadosConta() {
-        System.out.println("\nNome: " + getNomeCliente());
-        System.out.println("Telefone: " + getTelefone());
-        System.out.println("Número da conta: " + getNumeroConta());
-        System.out.print("Saldo: ");
-        System.out.println(currency.format(getSaldo()));
+        
     }
 }

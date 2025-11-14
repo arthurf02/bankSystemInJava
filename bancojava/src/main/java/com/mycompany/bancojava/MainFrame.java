@@ -4,17 +4,11 @@
  */
 package com.mycompany.bancojava;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-
 /**
  *
  * @author Arthu
  */
 public class MainFrame extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
     /**
@@ -84,20 +78,16 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        AccountDataId = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         accountDataNumber = new javax.swing.JTextField();
         btnSeeData = new javax.swing.JButton();
+        accountDataId = new javax.swing.JComboBox<>();
         accountDataMenu2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
+        accountDataName = new javax.swing.JLabel();
+        accountDataPhone = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,12 +95,12 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.CardLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Banco do Arthur");
+        jLabel1.setText("Banco Agiota");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setText("Seu dinheiro, sua vida!");
+        jLabel2.setText("Seu dinheiro, nossa vida!");
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu Iniciar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu inicial", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnNewAccount.setText("Criar conta");
         btnNewAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNewAccount)
                     .addComponent(btnBalance)
@@ -163,7 +153,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnWithdraw)
                     .addComponent(btnDeposit))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout startMenuLayout = new javax.swing.GroupLayout(startMenu);
@@ -176,14 +166,15 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(startMenuLayout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel1)
-                        .addGap(0, 133, Short.MAX_VALUE)))
+                        .addGroup(startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(startMenuLayout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(jLabel1))
+                            .addGroup(startMenuLayout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startMenuLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(86, 86, 86))
         );
         startMenuLayout.setVerticalGroup(
             startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,10 +557,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel21.setText("pessoais aqui!");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel22.setText("Id:");
-
-        AccountDataId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        AccountDataId.setText("jTextField1");
+        jLabel22.setText("ID:");
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel23.setText("Conta:");
@@ -585,6 +573,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        accountDataId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        accountDataId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1- Corrente", "2- Poupança" }));
+
         javax.swing.GroupLayout accountDataMenuLayout = new javax.swing.GroupLayout(accountDataMenu);
         accountDataMenu.setLayout(accountDataMenuLayout);
         accountDataMenuLayout.setHorizontalGroup(
@@ -599,11 +590,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(164, 164, 164)
                         .addComponent(jLabel21))
                     .addGroup(accountDataMenuLayout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(99, 99, 99)
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AccountDataId, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(accountDataId, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(accountDataNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -621,10 +612,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel21)
                 .addGap(87, 87, 87)
                 .addGroup(accountDataMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AccountDataId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
                     .addComponent(jLabel23)
-                    .addComponent(accountDataNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(accountDataNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(accountDataId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(btnSeeData)
                 .addContainerGap(102, Short.MAX_VALUE))
@@ -633,7 +624,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.add(accountDataMenu, "card8");
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel24.setText("Este são seus dados:");
+        jLabel24.setText("Estes são seus dados:");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel25.setText("Nome:");
@@ -641,23 +632,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel26.setText("Telefone:");
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel27.setText("jLabel27");
+        accountDataName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        accountDataName.setText("jLabel27");
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel28.setText("JLabel28");
-
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel29.setText("Conta:");
-
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel30.setText("jLabel30");
-
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel31.setText("Saldo:");
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel32.setText("jLabel32");
+        accountDataPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        accountDataPhone.setText("JLabel28");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Concluir");
@@ -671,31 +650,20 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(accountDataMenu2Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(jLabel24))
-                    .addGroup(accountDataMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(accountDataMenu2Layout.createSequentialGroup()
-                            .addGap(69, 69, 69)
-                            .addComponent(jLabel26)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(accountDataMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(accountDataMenu2Layout.createSequentialGroup()
-                                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel29)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(accountDataMenu2Layout.createSequentialGroup()
-                                    .addGap(35, 35, 35)
-                                    .addComponent(jLabel31)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, accountDataMenu2Layout.createSequentialGroup()
-                            .addGap(88, 88, 88)
-                            .addComponent(jLabel25)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(accountDataMenu2Layout.createSequentialGroup()
                         .addGap(219, 219, 219)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(accountDataMenu2Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(accountDataName, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDataMenu2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(accountDataPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         accountDataMenu2Layout.setVerticalGroup(
@@ -706,18 +674,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addGroup(accountDataMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jLabel27))
+                    .addComponent(accountDataName))
                 .addGap(18, 18, 18)
                 .addGroup(accountDataMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel30))
-                .addGap(18, 18, 18)
-                .addGroup(accountDataMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32))
-                .addGap(32, 32, 32)
+                    .addComponent(accountDataPhone))
+                .addGap(75, 75, 75)
                 .addComponent(jButton1)
                 .addContainerGap(86, Short.MAX_VALUE))
         );
@@ -757,13 +719,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeposit2ActionPerformed
 
     private void btnBalance2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalance2ActionPerformed
-        Conta.verSaldo(accountBalanceId, accountBalanceNumber, accountBalance);
-        balanceMenu.setVisible(false);
-        balanceMenu2.setVisible(true);
+        Conta.verSaldo(accountBalanceId, accountBalanceNumber, accountBalance, balanceMenu, balanceMenu2);
     }//GEN-LAST:event_btnBalance2ActionPerformed
 
     private void btnSeeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeDataActionPerformed
-        // TODO add your handling code here:
+        Conta.verDadosConta(accountDataId, accountDataNumber, accountDataName, accountDataPhone, accountDataMenu, accountDataMenu2);
     }//GEN-LAST:event_btnSeeDataActionPerformed
 
     private void phoneNewAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNewAccountActionPerformed
@@ -810,13 +770,15 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AccountDataId;
     private javax.swing.JLabel accountBalance;
     private javax.swing.JComboBox<String> accountBalanceId;
     private javax.swing.JTextField accountBalanceNumber;
+    private javax.swing.JComboBox<String> accountDataId;
     private javax.swing.JPanel accountDataMenu;
     private javax.swing.JPanel accountDataMenu2;
+    private javax.swing.JLabel accountDataName;
     private javax.swing.JTextField accountDataNumber;
+    private javax.swing.JLabel accountDataPhone;
     private javax.swing.JPanel balanceMenu;
     private javax.swing.JPanel balanceMenu2;
     private javax.swing.JButton btnAccountData;
@@ -853,13 +815,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

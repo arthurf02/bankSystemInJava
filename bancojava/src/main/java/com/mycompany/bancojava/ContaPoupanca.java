@@ -7,7 +7,7 @@ public class ContaPoupanca extends Conta{
     public ContaPoupanca(int _id, int _numeroConta, String _nomeCliente, String _telefone, double _saldo){
         super(_id, _numeroConta, _nomeCliente, _telefone, _saldo);
     }
-    @Override
+    /*@Override
     public void depositar(double valor){
         if (valor >= 1){
             double saldo = getSaldo();
@@ -18,5 +18,5 @@ public class ContaPoupanca extends Conta{
         } else{
             System.out.println("Valor inferior a R$1,00.");
         }
-    }
+    }*/
 }
