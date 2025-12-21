@@ -4,6 +4,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ import javax.swing.JTextField;
 public class Conta {
 
     static NumberFormat currency = NumberFormat.getInstance();
+    static NumberFormat printCurrency = NumberFormat.getCurrencyInstance(Locale.getDefault());
     private int id;
     private int numeroConta;
     private String nomeCliente;
@@ -26,11 +28,13 @@ public class Conta {
             return false;
         }
         try {
-            long i = Long.parseLong(usuario);
-        } catch (NumberFormatException nfe) {
+            Double.parseDouble(usuario);
+            return true;
+        } catch (NumberFormatException e) {
+            // Se uma exceção NumberFormatException for lançada,
+            // a string não é um double válido.
             return false;
         }
-        return true;
     }
 
     public Conta(int id, int numeroConta, String nomeCliente, String telefone, double saldo) {
@@ -108,11 +112,87 @@ public class Conta {
 
     }
 
-    public void sacar(JPanel balanceMenu, JPanel balanceMenu2, JTextField withdrawValue, JLabel withdrawValue) {
-        if (valor < saldo) {
-            saldo -= valor;
+    public static void sacar(JPanel withdrawMenu, JPanel withdrawMenu2, JComboBox<String> withdrawAccountID, JTextField withdrawAccountNumber, JTextField withdrawValue, JLabel withdrawValue2, JLabel finalBalance) {
+        if (withdrawAccountID.getSelectedItem() == "1- Corrente") {
+            if (isNumeric(withdrawAccountNumber.getText()) == true) {
+                int account = Integer.parseInt(withdrawAccountNumber.getText());
+                int i = 0;
+                int foundAccount = 0;
+                while (i < contasC.size()) {
+                    foundAccount = contasC.get(i).getNumeroConta();
+                    if (account == foundAccount) {
+                        Number number = 0;
+                        double value = 0;
+                            try {
+                                number = currency.parse(withdrawValue.getText());
+                            } catch (ParseException ex) {
+                                System.getLogger(Conta.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                            }
+                        if (isNumeric(String.valueOf(number))) {
+                            double withdraw = number.doubleValue();
+                            double balance = contasC.get(i).getSaldo();
+                            double result = balance - withdraw;
+                            contasC.get(i).setSaldo(result);
+                            withdrawValue2.setText(printCurrency.format(withdraw));
+                            finalBalance.setText(printCurrency.format(result));
+                            withdrawMenu.setVisible(false);
+                            withdrawMenu2.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Digite apenas números!", "Alert", JOptionPane.WARNING_MESSAGE);
+                        }
+                        break;
+                    } else {
+                        i += 1;
+                    }
+                }
+                if (account != foundAccount) {
+                    JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            if (isNumeric(withdrawAccountNumber.getText()) == true) {
+                int account = Integer.parseInt(withdrawAccountNumber.getText());
+                int i = 0;
+                int foundAccount = 0;
+                while (i < contasP.size()) {
+                    foundAccount = contasP.get(i).getNumeroConta();
+                    if (account == foundAccount) {
+                        Number number = 0;
+                        double value = 0;
+                            try {
+                                number = currency.parse(withdrawValue.getText());
+                            } catch (ParseException ex) {
+                                System.getLogger(Conta.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                            }
+                        if (isNumeric(String.valueOf(number))) {
+                            double withdraw = number.doubleValue();
+                            double balance = contasP.get(i).getSaldo();
+                            double result = balance - withdraw;
+                            contasC.get(i).setSaldo(result);
+                            withdrawValue2.setText(printCurrency.format(withdraw));
+                            finalBalance.setText(printCurrency.format(result));
+                            withdrawMenu.setVisible(false);
+                            withdrawMenu2.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Digite apenas números!", "Alert", JOptionPane.WARNING_MESSAGE);
+                        }
+                        break;
+                    } else {
+                        i += 1;
+                    }
+                }
+                if (account != foundAccount) {
+                    JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
         }
-        System.out.println("Valor sacado: " + currency.format(valor) + "\nO saldo agora é de: " + currency.format(saldo));
+        withdrawAccountID.setSelectedItem("1- Corrente");
+        withdrawAccountNumber.setText("");
+        withdrawValue.setText("");
     }
 
     public void depositar(double valor) {
@@ -133,7 +213,7 @@ public class Conta {
                 while (i < contasC.size()) {
                     contaEncontrada = contasC.get(i).getNumeroConta();
                     if (conta == contaEncontrada) {
-                        accountBalance.setText(String.valueOf(contasC.get(i).getSaldo()));
+                        accountBalance.setText(printCurrency.format(contasC.get(i).getSaldo()));
                         balanceMenu.setVisible(false);
                         balanceMenu2.setVisible(true);
                         break;
@@ -155,7 +235,7 @@ public class Conta {
                 while (i < contasP.size()) {
                     contaEncontrada = contasP.get(i).getNumeroConta();
                     if (conta == contaEncontrada) {
-                        accountBalance.setText(String.valueOf(contasP.get(i).getSaldo()));
+                        accountBalance.setText(printCurrency.format(contasP.get(i).getSaldo()));
                         balanceMenu.setVisible(false);
                         balanceMenu2.setVisible(true);
                         break;
@@ -169,7 +249,7 @@ public class Conta {
             } else {
                 JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Número de conta inválido!", "Alert", JOptionPane.WARNING_MESSAGE);
         }
         accountBalanceId.setSelectedItem("1- Corrente");

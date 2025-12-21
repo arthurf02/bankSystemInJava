@@ -54,9 +54,20 @@ public class MainFrame extends javax.swing.JFrame {
         withdrawMenu = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        withdrawValue = new javax.swing.JTextField();
+        withdrawAccountNumber = new javax.swing.JTextField();
         btnWithdraw2 = new javax.swing.JButton();
         btnBackFromWithdrawMenu = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        withdrawAccountID = new javax.swing.JComboBox<>();
+        jLabel31 = new javax.swing.JLabel();
+        withdrawValue = new javax.swing.JTextField();
+        withdrawMenu2 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        withdrawValue2 = new javax.swing.JLabel();
+        btnCompleteWithdraw = new javax.swing.JButton();
+        finalBalance = new javax.swing.JLabel();
         depositMenu = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -337,11 +348,15 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Quanto você precisa?");
 
-        withdrawValue.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        withdrawValue.setText("jTextField4");
+        withdrawAccountNumber.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         btnWithdraw2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnWithdraw2.setText("Sacar");
+        btnWithdraw2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWithdraw2ActionPerformed(evt);
+            }
+        });
 
         btnBackFromWithdrawMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBackFromWithdrawMenu.setText("Voltar");
@@ -349,6 +364,22 @@ public class MainFrame extends javax.swing.JFrame {
         btnBackFromWithdrawMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackFromWithdrawMenuActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel30.setText("ID:");
+
+        withdrawAccountID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        withdrawAccountID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1- Corrente", "2- Poupança" }));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel31.setText("Conta:");
+
+        withdrawValue.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        withdrawValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawValueActionPerformed(evt);
             }
         });
 
@@ -362,16 +393,25 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel8))
                     .addGroup(withdrawMenuLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(withdrawValue, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(withdrawMenuLayout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(btnWithdraw2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(withdrawMenuLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnBackFromWithdrawMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBackFromWithdrawMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(withdrawMenuLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(withdrawValue, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(withdrawMenuLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(withdrawAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(withdrawAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         withdrawMenuLayout.setVerticalGroup(
@@ -381,16 +421,91 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnBackFromWithdrawMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel8)
-                .addGap(82, 82, 82)
+                .addGap(48, 48, 48)
+                .addGroup(withdrawMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(withdrawAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addComponent(withdrawAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(withdrawMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(withdrawValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(29, 29, 29)
                 .addComponent(btnWithdraw2)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jPanel1.add(withdrawMenu, "card4");
+
+        withdrawMenu2.setPreferredSize(new java.awt.Dimension(553, 426));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel27.setText("Dinheiro na mão!");
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel28.setText("Valor sacado:");
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel29.setText("Saldo final:");
+
+        withdrawValue2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        btnCompleteWithdraw.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCompleteWithdraw.setText("Concluir");
+        btnCompleteWithdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompleteWithdrawActionPerformed(evt);
+            }
+        });
+
+        finalBalance.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout withdrawMenu2Layout = new javax.swing.GroupLayout(withdrawMenu2);
+        withdrawMenu2.setLayout(withdrawMenu2Layout);
+        withdrawMenu2Layout.setHorizontalGroup(
+            withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawMenu2Layout.createSequentialGroup()
+                .addContainerGap(142, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addGap(137, 137, 137))
+            .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                .addGroup(withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(withdrawValue2))
+                            .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(finalBalance))))
+                    .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(btnCompleteWithdraw)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        withdrawMenu2Layout.setVerticalGroup(
+            withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel27)
+                .addGap(74, 74, 74)
+                .addGroup(withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(withdrawValue2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(finalBalance))
+                .addGap(39, 39, 39)
+                .addComponent(btnCompleteWithdraw)
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(withdrawMenu2, "card10");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel10.setText("Gastar é bom, mas guardar é");
@@ -791,7 +906,6 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         startMenu.setVisible(false);
         newAccountMenu.setVisible(true);
-        pack();
     }//GEN-LAST:event_btnNewAccountActionPerformed
 
     private void btnNewAccount2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewAccount2ActionPerformed
@@ -881,6 +995,21 @@ public class MainFrame extends javax.swing.JFrame {
         startMenu.setVisible(false);
     }//GEN-LAST:event_btnDepositActionPerformed
 
+    private void btnWithdraw2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdraw2ActionPerformed
+        // TODO add your handling code here:
+        Conta.sacar(withdrawMenu, withdrawMenu2, withdrawAccountID, withdrawAccountNumber, withdrawValue, withdrawValue2, finalBalance);
+    }//GEN-LAST:event_btnWithdraw2ActionPerformed
+
+    private void btnCompleteWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteWithdrawActionPerformed
+        // TODO add your handling code here:
+        withdrawMenu2.setVisible(false);
+        startMenu.setVisible(true);
+    }//GEN-LAST:event_btnCompleteWithdrawActionPerformed
+
+    private void withdrawValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_withdrawValueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -926,6 +1055,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBalance;
     private javax.swing.JButton btnBalance2;
     private javax.swing.JButton btnCompleteBalanceView;
+    private javax.swing.JButton btnCompleteWithdraw;
     private javax.swing.JButton btnDeposit;
     private javax.swing.JButton btnDeposit2;
     private javax.swing.JButton btnNewAccount;
@@ -937,6 +1067,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxAccountType;
     private javax.swing.JPanel depositMenu;
     private javax.swing.JTextField depositValue;
+    private javax.swing.JLabel finalBalance;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -956,7 +1087,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -971,7 +1107,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel newAccountMenu;
     private javax.swing.JTextField phoneNewAccount;
     private javax.swing.JPanel startMenu;
+    private javax.swing.JComboBox<String> withdrawAccountID;
+    private javax.swing.JTextField withdrawAccountNumber;
     private javax.swing.JPanel withdrawMenu;
+    private javax.swing.JPanel withdrawMenu2;
     private javax.swing.JTextField withdrawValue;
+    private javax.swing.JLabel withdrawValue2;
     // End of variables declaration//GEN-END:variables
 }
