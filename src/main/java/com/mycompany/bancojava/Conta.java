@@ -108,12 +108,12 @@ public class Conta {
 
     }
 
-    /*public void sacar(JPanel balanceMenu, JPanel balanceMenu2, JLabel withdrawValue) {
+    public void sacar(JPanel balanceMenu, JPanel balanceMenu2, JTextField withdrawValue, JLabel withdrawValue) {
         if (valor < saldo) {
             saldo -= valor;
         }
         System.out.println("Valor sacado: " + currency.format(valor) + "\nO saldo agora é de: " + currency.format(saldo));
-    }*/
+    }
 
     public void depositar(double valor) {
         if (valor >= 1) {
