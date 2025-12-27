@@ -51,6 +51,13 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         comboBoxAccountType = new javax.swing.JComboBox<>();
         btnBackFromNewAccountMenu = new javax.swing.JButton();
+        newAccountMenu2 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        showAccountID = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        showAccountNumber = new javax.swing.JLabel();
+        btnCompleteNewAccount = new javax.swing.JButton();
         withdrawMenu = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -120,7 +127,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(553, 370));
+        jPanel1.setPreferredSize(new java.awt.Dimension(553, 370));
         jPanel1.setLayout(new java.awt.CardLayout());
+
+        startMenu.setMaximumSize(new java.awt.Dimension(553, 370));
+        startMenu.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Banco Agiota");
@@ -187,7 +199,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNewAccount)
                     .addComponent(btnBalance)
@@ -196,7 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnWithdraw)
                     .addComponent(btnDeposit))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout startMenuLayout = new javax.swing.GroupLayout(startMenu);
@@ -234,6 +246,9 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.getAccessibleContext().setAccessibleName("");
 
         jPanel1.add(startMenu, "card2");
+
+        newAccountMenu.setMaximumSize(new java.awt.Dimension(553, 370));
+        newAccountMenu.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setText("Hora de ter uma conta");
@@ -283,35 +298,8 @@ public class MainFrame extends javax.swing.JFrame {
         newAccountMenu.setLayout(newAccountMenuLayout);
         newAccountMenuLayout.setHorizontalGroup(
             newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newAccountMenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newAccountMenuLayout.createSequentialGroup()
-                        .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboBoxAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(newAccountMenuLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(btnNewAccount2)))
-                .addGap(139, 139, 139))
             .addGroup(newAccountMenuLayout.createSequentialGroup()
                 .addGroup(newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newAccountMenuLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(newAccountMenuLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nameNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(newAccountMenuLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phoneNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(moneyNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(newAccountMenuLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBackFromNewAccountMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -320,8 +308,33 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(newAccountMenuLayout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jLabel4)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(jLabel4))
+                    .addGroup(newAccountMenuLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(phoneNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(moneyNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(newAccountMenuLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nameNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newAccountMenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(newAccountMenuLayout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(newAccountMenuLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(btnNewAccount2)))
+                .addGap(145, 145, 145))
         );
         newAccountMenuLayout.setVerticalGroup(
             newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +345,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(newAccountMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(nameNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -348,10 +361,77 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(comboBoxAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnNewAccount2)
-                .addGap(51, 51, 51))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jPanel1.add(newAccountMenu, "card3");
+
+        newAccountMenu2.setMaximumSize(new java.awt.Dimension(553, 370));
+        newAccountMenu2.setPreferredSize(new java.awt.Dimension(553, 370));
+
+        jLabel38.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        jLabel38.setText("Aqui está sua conta!");
+
+        jLabel39.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel39.setText("Seu ID:");
+
+        showAccountID.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        showAccountID.setText("fa");
+
+        jLabel41.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel41.setText("Sua conta:");
+
+        showAccountNumber.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        showAccountNumber.setText("rf");
+
+        btnCompleteNewAccount.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        btnCompleteNewAccount.setText("Concluir");
+
+        javax.swing.GroupLayout newAccountMenu2Layout = new javax.swing.GroupLayout(newAccountMenu2);
+        newAccountMenu2.setLayout(newAccountMenu2Layout);
+        newAccountMenu2Layout.setHorizontalGroup(
+            newAccountMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newAccountMenu2Layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(btnCompleteNewAccount)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newAccountMenu2Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(newAccountMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newAccountMenu2Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(109, 109, 109))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newAccountMenu2Layout.createSequentialGroup()
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(showAccountID)
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(showAccountNumber)
+                        .addGap(138, 138, 138))))
+        );
+        newAccountMenu2Layout.setVerticalGroup(
+            newAccountMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newAccountMenu2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel38)
+                .addGap(118, 118, 118)
+                .addGroup(newAccountMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(showAccountID)
+                    .addGroup(newAccountMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(showAccountNumber)
+                        .addComponent(jLabel41)))
+                .addGap(37, 37, 37)
+                .addComponent(btnCompleteNewAccount)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(newAccountMenu2, "card12");
+
+        withdrawMenu.setMaximumSize(new java.awt.Dimension(553, 370));
+        withdrawMenu.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel8.setText("Precisando de uma grana, né!");
@@ -418,7 +498,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel31)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(withdrawAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         withdrawMenuLayout.setVerticalGroup(
             withdrawMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,12 +519,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(withdrawValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(btnWithdraw2)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         jPanel1.add(withdrawMenu, "card4");
 
-        withdrawMenu2.setPreferredSize(new java.awt.Dimension(553, 426));
+        withdrawMenu2.setMaximumSize(new java.awt.Dimension(553, 370));
+        withdrawMenu2.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel27.setText("Dinheiro na mão!");
@@ -471,10 +552,6 @@ public class MainFrame extends javax.swing.JFrame {
         withdrawMenu2.setLayout(withdrawMenu2Layout);
         withdrawMenu2Layout.setHorizontalGroup(
             withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawMenu2Layout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
-                .addComponent(jLabel27)
-                .addGap(137, 137, 137))
             .addGroup(withdrawMenu2Layout.createSequentialGroup()
                 .addGroup(withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(withdrawMenu2Layout.createSequentialGroup()
@@ -489,9 +566,12 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(finalBalance))))
                     .addGroup(withdrawMenu2Layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel27))
+                    .addGroup(withdrawMenu2Layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
                         .addComponent(btnCompleteWithdraw)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         withdrawMenu2Layout.setVerticalGroup(
             withdrawMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,10 +588,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(finalBalance))
                 .addGap(39, 39, 39)
                 .addComponent(btnCompleteWithdraw)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jPanel1.add(withdrawMenu2, "card10");
+
+        depositMenu.setMaximumSize(new java.awt.Dimension(553, 370));
+        depositMenu.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel10.setText("Gastar é bom, mas guardar é");
@@ -585,7 +668,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(depositAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         depositMenuLayout.setVerticalGroup(
             depositMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -608,12 +691,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addGap(49, 49, 49)
                 .addComponent(btnDeposit2)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jPanel1.add(depositMenu, "card5");
 
-        depositMenu2.setPreferredSize(new java.awt.Dimension(553, 426));
+        depositMenu2.setMaximumSize(new java.awt.Dimension(553, 370));
+        depositMenu2.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel35.setText("Guardado a sete chaves!");
@@ -660,14 +744,14 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(depositMenu2Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(jLabel35)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         depositMenu2Layout.setVerticalGroup(
             depositMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(depositMenu2Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jLabel35)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(depositMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(depositValue2))
@@ -681,6 +765,9 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(depositMenu2, "card11");
+
+        balanceMenu.setMaximumSize(new java.awt.Dimension(553, 370));
+        balanceMenu.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel13.setText("É sempre bom saber se");
@@ -744,7 +831,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(balanceMenuLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBackFromBalanceMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         balanceMenuLayout.setVerticalGroup(
             balanceMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -763,10 +850,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(accountBalanceId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(btnBalance2)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jPanel1.add(balanceMenu, "card6");
+
+        balanceMenu2.setMaximumSize(new java.awt.Dimension(553, 370));
+        balanceMenu2.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel17.setText("É sempre bom saber se");
@@ -804,7 +894,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(accountBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balanceMenu2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnCompleteBalanceView)
@@ -823,10 +913,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(accountBalance))
                 .addGap(30, 30, 30)
                 .addComponent(btnCompleteBalanceView)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         jPanel1.add(balanceMenu2, "card7");
+
+        accountDataMenu.setMaximumSize(new java.awt.Dimension(553, 370));
+        accountDataMenu.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel20.setText("Relembre suas informações");
@@ -867,7 +960,7 @@ public class MainFrame extends javax.swing.JFrame {
         accountDataMenuLayout.setHorizontalGroup(
             accountDataMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDataMenuLayout.createSequentialGroup()
-                .addGap(0, 60, Short.MAX_VALUE)
+                .addGap(0, 80, Short.MAX_VALUE)
                 .addComponent(jLabel20)
                 .addGap(58, 58, 58))
             .addGroup(accountDataMenuLayout.createSequentialGroup()
@@ -909,10 +1002,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(accountDataId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(btnSeeData)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jPanel1.add(accountDataMenu, "card8");
+
+        accountDataMenu2.setMaximumSize(new java.awt.Dimension(553, 370));
+        accountDataMenu2.setPreferredSize(new java.awt.Dimension(553, 370));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel24.setText("Estes são seus dados:");
@@ -960,7 +1056,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(accountDataPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         accountDataMenu2Layout.setVerticalGroup(
             accountDataMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -977,7 +1073,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(accountDataPhone))
                 .addGap(75, 75, 75)
                 .addComponent(btnSeeAccountDataCompleted)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jPanel1.add(accountDataMenu2, "card9");
@@ -1004,8 +1100,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnNewAccount2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewAccount2ActionPerformed
         // TODO add your handling code here:
-        Conta.criarConta(nameNewAccount, phoneNewAccount, moneyNewAccount, comboBoxAccountType, newAccountMenu, startMenu, nameNewAccount,
-                phoneNewAccount, moneyNewAccount);
+        Conta.criarConta(nameNewAccount, phoneNewAccount, moneyNewAccount, comboBoxAccountType, newAccountMenu, newAccountMenu2, nameNewAccount,
+                phoneNewAccount, moneyNewAccount, showAccountID, showAccountNumber);
     }//GEN-LAST:event_btnNewAccount2ActionPerformed
 
     private void btnDeposit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeposit2ActionPerformed
@@ -1149,6 +1245,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBalance2;
     private javax.swing.JButton btnCompleteBalanceView;
     private javax.swing.JButton btnCompleteDeposit;
+    private javax.swing.JButton btnCompleteNewAccount;
     private javax.swing.JButton btnCompleteWithdraw;
     private javax.swing.JButton btnDeposit;
     private javax.swing.JButton btnDeposit2;
@@ -1198,7 +1295,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1209,7 +1309,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField moneyNewAccount;
     private javax.swing.JTextField nameNewAccount;
     private javax.swing.JPanel newAccountMenu;
+    private javax.swing.JPanel newAccountMenu2;
     private javax.swing.JTextField phoneNewAccount;
+    private javax.swing.JLabel showAccountID;
+    private javax.swing.JLabel showAccountNumber;
     private javax.swing.JPanel startMenu;
     private javax.swing.JComboBox<String> withdrawAccountID;
     private javax.swing.JTextField withdrawAccountNumber;

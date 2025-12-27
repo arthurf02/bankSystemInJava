@@ -70,8 +70,8 @@ public class Conta {
     }
 
     public static void criarConta(JTextField nome, JTextField telefone, JTextField saldo,
-            JComboBox<String> comboBoxAccountType, JPanel newAccountMenu, JPanel startMenu,
-            JTextField nameNewAccount, JTextField phoneNewAccount, JTextField moneyNewAccount) {
+            JComboBox<String> comboBoxAccountType, JPanel newAccountMenu, JPanel newAccountMenu2,
+            JTextField nameNewAccount, JTextField phoneNewAccount, JTextField moneyNewAccount, JLabel showAccountID, JLabel showAccountNumber) {
         Number number = 0;
         try {
             number = currency.parse(saldo.getText());
@@ -83,13 +83,17 @@ public class Conta {
         if (accountType == "1- Corrente") {
             ContaCorrente cc = new ContaCorrente(1, contasC.size() + 10000, nome.getText(), telefone.getText(), saldo1);
             contasC.add(cc);
+            showAccountID.setText("1");
+            showAccountNumber.setText("" + ((contasC.size() - 1) + 10000));
             newAccountMenu.setVisible(false);
-            startMenu.setVisible(true);
+            newAccountMenu2.setVisible(true);
         } else {
             ContaPoupanca cp = new ContaPoupanca(2, contasP.size() + 10000, nome.getText(), telefone.getText(), saldo1);
             contasP.add(cp);
+            showAccountID.setText("2");
+            showAccountNumber.setText("" + ((contasP.size() - 1) + 10000));
             newAccountMenu.setVisible(false);
-            startMenu.setVisible(true);
+            newAccountMenu2.setVisible(true);
         }
         nameNewAccount.setText("");
         phoneNewAccount.setText("");
