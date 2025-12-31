@@ -36,7 +36,9 @@ public class Conta {
             return false;
         }
     }
-
+    
+    public Conta(){}
+    
     public Conta(int id, int numeroConta, String nomeCliente, String telefone, double saldo) {
         this.id = id;
         this.numeroConta = numeroConta;
@@ -69,7 +71,7 @@ public class Conta {
         saldo = valor;
     }
 
-    public static void criarConta(JTextField nome, JTextField telefone, JTextField saldo,
+    public void criarConta(JTextField nome, JTextField telefone, JTextField saldo,
             JComboBox<String> comboBoxAccountType, JPanel newAccountMenu, JPanel newAccountMenu2,
             JTextField nameNewAccount, JTextField phoneNewAccount, JTextField moneyNewAccount, JLabel showAccountID, JLabel showAccountNumber) {
         Number number = 0;
@@ -81,15 +83,13 @@ public class Conta {
         double saldo1 = number.doubleValue();
         String accountType = String.valueOf(comboBoxAccountType.getSelectedItem());
         if (accountType == "1- Corrente") {
-            ContaCorrente cc = new ContaCorrente(1, contasC.size() + 10000, nome.getText(), telefone.getText(), saldo1);
-            contasC.add(cc);
+            contasC.add(new ContaCorrente(1, contasC.size() + 10000, nome.getText(), telefone.getText(), saldo1));
             showAccountID.setText("1");
             showAccountNumber.setText("" + ((contasC.size() - 1) + 10000));
             newAccountMenu.setVisible(false);
             newAccountMenu2.setVisible(true);
         } else {
-            ContaPoupanca cp = new ContaPoupanca(2, contasP.size() + 10000, nome.getText(), telefone.getText(), saldo1);
-            contasP.add(cp);
+            contasP.add(new ContaPoupanca(2, contasP.size() + 10000, nome.getText(), telefone.getText(), saldo1));
             showAccountID.setText("2");
             showAccountNumber.setText("" + ((contasP.size() - 1) + 10000));
             newAccountMenu.setVisible(false);
@@ -116,7 +116,7 @@ public class Conta {
 
     }
 
-    public static void sacar(JPanel withdrawMenu, JPanel withdrawMenu2, JComboBox<String> withdrawAccountID, JTextField withdrawAccountNumber, JTextField withdrawValue, JLabel withdrawValue2, JLabel finalBalance) {
+    public void sacar(JPanel withdrawMenu, JPanel withdrawMenu2, JComboBox<String> withdrawAccountID, JTextField withdrawAccountNumber, JTextField withdrawValue, JLabel withdrawValue2, JLabel finalBalance) {
         if (withdrawAccountID.getSelectedItem() == "1- Corrente") {
             if (isNumeric(withdrawAccountNumber.getText()) == true) {
                 int account = Integer.parseInt(withdrawAccountNumber.getText());
@@ -126,7 +126,6 @@ public class Conta {
                     foundAccount = contasC.get(i).getNumeroConta();
                     if (account == foundAccount) {
                         Number number = 0;
-                        double value = 0;
                             try {
                                 number = currency.parse(withdrawValue.getText());
                             } catch (ParseException ex) {
@@ -135,6 +134,10 @@ public class Conta {
                         if (isNumeric(String.valueOf(number))) {
                             double withdraw = number.doubleValue();
                             double balance = contasC.get(i).getSaldo();
+                            if (balance < withdraw){
+                                JOptionPane.showMessageDialog(null, "Valor maior que saldo disponível");
+                                break;
+                            }
                             double result = balance - withdraw;
                             contasC.get(i).setSaldo(result);
                             withdrawValue2.setText(printCurrency.format(withdraw));
@@ -164,7 +167,6 @@ public class Conta {
                     foundAccount = contasP.get(i).getNumeroConta();
                     if (account == foundAccount) {
                         Number number = 0;
-                        double value = 0;
                             try {
                                 number = currency.parse(withdrawValue.getText());
                             } catch (ParseException ex) {
@@ -173,6 +175,10 @@ public class Conta {
                         if (isNumeric(String.valueOf(number))) {
                             double withdraw = number.doubleValue();
                             double balance = contasP.get(i).getSaldo();
+                            if (balance < withdraw){
+                                JOptionPane.showMessageDialog(null, "Valor maior que saldo disponível");
+                                break;
+                            }
                             double result = balance - withdraw;
                             contasC.get(i).setSaldo(result);
                             withdrawValue2.setText(printCurrency.format(withdraw));
@@ -199,7 +205,7 @@ public class Conta {
         withdrawValue.setText("");
     }
 
-    public static void depositar(JPanel depositMenu, JPanel depositMenu2, JComboBox<String> depositAccountID, JTextField depositAccountNumber, JTextField depositValue, JLabel depositValue2, JLabel finalBalance2) {
+    public void depositar(JPanel depositMenu, JPanel depositMenu2, JComboBox<String> depositAccountID, JTextField depositAccountNumber, JTextField depositValue, JLabel depositValue2, JLabel finalBalance2) {
         if (depositAccountID.getSelectedItem() == "1- Corrente") {
             if (isNumeric(depositAccountNumber.getText()) == true) {
                 int account = Integer.parseInt(depositAccountNumber.getText());
@@ -334,7 +340,7 @@ public class Conta {
         accountBalanceNumber.setText("");
     }
 
-    public static void verDadosConta(JComboBox accountDataId, JTextField accountDataNumber, JLabel accountDataName, JLabel accountDataPhone, JPanel accountDataMenu, JPanel accountDataMenu2) {
+    public void verDadosConta(JComboBox accountDataId, JTextField accountDataNumber, JLabel accountDataName, JLabel accountDataPhone, JPanel accountDataMenu, JPanel accountDataMenu2) {
         if (accountDataId.getSelectedItem() == "1- Corrente") {
             if (isNumeric(accountDataNumber.getText()) == true) {
                 int conta = Integer.parseInt(accountDataNumber.getText());
